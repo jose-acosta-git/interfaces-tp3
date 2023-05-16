@@ -94,7 +94,7 @@ main {
 
 .jump {
     background: url('../assets/BlueWizard/jump/jump-sprite-50.png');
-    animation: jump .8s steps(8) infinite;
+    animation: jump .8s steps(8);
 }
 
 @keyframes jump {
