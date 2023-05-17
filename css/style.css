@@ -76,52 +76,52 @@ main {
 }
 
 #player {
-    width: 256px;
-    height: 256px;
+    width: 80px;
+    height: 139px;
     z-index: 1;
     position: absolute;
-    bottom: 5%;
-    left: 30px;
+    bottom: 12%;
+    left: 100px;
 }
 
 .run {
-    background: url('../assets/BlueWizard/run/run-sprite-50.png');
+    background: url('../assets/BlueWizard/run/50smaller/PineTools.com_files/sprite.png');
     animation: run .8s steps(20) infinite;
 }
 
 @keyframes run {
     0% {background-position: 0}
-    100% {background-position: -5120px}
+    100% {background-position: -1600px}
 }
 
 .jump {
-    background: url('../assets/BlueWizard/jump/jump-sprite-50.png');
+    background: url('../assets/BlueWizard/jump/50smaller/PineTools.com_files/spritesheet.png');
     animation: jump .8s steps(8);
 }
 
 @keyframes jump {
     0% {background-position: 0}
-    50% {bottom: 30%}
+    50% {bottom: 50%}
     100% {
-        background-position: -2048px;
+        background-position: -640px;
         bottom: 10%;
     }
 }
 
 #enemy {
-    width: 256px;
-    height: 256px;
+    width: 166px;
+    height: 111px;
     z-index: 1;
     position: absolute;
-    bottom: 3%;
+    bottom: 12%;
     right: -40%;
-    background: url('../assets/Slime/idle/slime-idle-50.png');
+    background: url('../assets/Slime/idle/50smaller/recortado/spritesheet.png');
     animation: idle .5s steps(20) infinite, move 2s linear;
 }
 
 @keyframes idle {
     0% { background-position: 0 }
-    100% { background-position: -5120px }
+    100% { background-position: -3320px }
 }
 
 @keyframes move {
