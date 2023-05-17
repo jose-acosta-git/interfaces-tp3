@@ -3,10 +3,12 @@
 const main = document.getElementById('main');
 let enemies = [];
 let player;
+let playing = false;
 
 startGame();
 
 function startGame() {
+    playing = true;
     player = new Player(main);
     window.addEventListener('keydown', function(e) {
         if (e.key == 'ArrowUp')
@@ -14,7 +16,8 @@ function startGame() {
     });
 
     setInterval(() => {
-        enemies.push(new Enemy(main))
+        if (playing)
+            enemies.push(new Enemy(main))
     }, 3000);
 
     setInterval(gameLoop, 200);
@@ -22,13 +25,17 @@ function startGame() {
 }
 
 function gameLoop() {
-    enemies.forEach(enemy => {
-        if(areColliding(player.getPos(), enemy.getPos())) {
-            console.log('colission')
-            //played.die();
-            //enemy.hit();
-        }
-    });
+    if (playing) {
+        enemies.forEach(enemy => {
+            if(areColliding(player.getPos(), enemy.getPos())) {
+                playing = false;
+                for (const child of main.children) {
+                    child.style.animationPlayState = 'paused';
+                }
+                player.die();
+            }
+        });
+    }
 }
 
 function areColliding(entity1, entity2) {

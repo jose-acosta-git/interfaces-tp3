@@ -18,4 +18,18 @@ class Player extends Entity {
             })
         }
     }
+
+    die() {
+        if (this.jumping) {
+            this.element.classList.remove('jump')
+        } else {
+            this.element.classList.remove('run')
+        }
+        this.element.style.animationPlayState = 'running';
+        this.element.classList.add('die');
+        this.element.addEventListener('animationend', () => {
+            this.element.classList.remove('die');
+            this.element.style.background = 'url(assets/BlueWizard/die/resized/cutted/lastFrame.png)'
+        })
+    }
 }
