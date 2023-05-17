@@ -3,7 +3,7 @@ class Player extends Entity {
         super(main);
         this.element.id = 'player';
         this.element.classList.add('run');
-        let jumping = false;
+        this.jumping = false;
     }
 
     jump() {

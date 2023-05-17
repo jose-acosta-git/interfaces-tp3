@@ -2,6 +2,8 @@ body {
     height: 100vh;
     width: 100%;
     margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 main {
@@ -78,7 +80,7 @@ main {
     height: 256px;
     z-index: 1;
     position: absolute;
-    bottom: .5%;
+    bottom: 5%;
     left: 30px;
 }
 
@@ -104,4 +106,25 @@ main {
         background-position: -2048px;
         bottom: 10%;
     }
+}
+
+#enemy {
+    width: 256px;
+    height: 256px;
+    z-index: 1;
+    position: absolute;
+    bottom: 3%;
+    right: -40%;
+    background: url('../assets/Slime/idle/slime-idle-50.png');
+    animation: idle .5s steps(20) infinite, move 2s linear;
+}
+
+@keyframes idle {
+    0% { background-position: 0 }
+    100% { background-position: -5120px }
+}
+
+@keyframes move {
+    from { right: -40% }
+    to { right: 100% }
 }
