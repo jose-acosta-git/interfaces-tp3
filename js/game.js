@@ -1,16 +1,19 @@
 "use strict";
 
 const main = document.getElementById('main');
+const magicElem = document.getElementById('magic');
 let enemies = [];
 let potions = [];
 let player;
 let playing = false;
-let magic = 50;
+let magic;
 
 startGame();
 
 function startGame() {
     playing = true;
+    magic = 5;
+    magicElem.innerHTML = `Magia restante: ${magic}`;
     player = new Player(main);
     window.addEventListener('keydown', function(e) {
         if (e.key == 'ArrowUp')
@@ -18,6 +21,13 @@ function startGame() {
     });
 
     setInterval(gameLoop, 200);
+
+    setInterval(() => {
+        if (playing) {
+            magic--;
+            magicElem.innerHTML = `Magia restante: ${magic}`;
+        }
+    }, 1000)
 
     //Pushear random cada 1s
 
@@ -48,8 +58,17 @@ function gameLoop() {
             if(areColliding(player.getPos(), potion.getPos())) {
                 potion.drink();
                 magic++;
+                magicElem.innerHTML = `Magia restante: ${magic}`;
+                potions.splice(potions.indexOf(potion), 1);
             }
         })
+        if (magic == 0) {
+            playing = false;
+            for (const child of main.children) {
+                child.style.animationPlayState = 'paused';
+            }
+            player.die();
+        }
     }
 }
 
