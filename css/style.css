@@ -140,8 +140,8 @@ main {
 }
 
 #potion {
-    width: 85px;
-    height: 85px;
+    width: 60px;
+    height: 60px;
     z-index: 3;
     position: absolute;
     bottom: 15%;
@@ -155,18 +155,18 @@ main {
 
 @keyframes potion {
     from { background-position: 0 }
-    to { background-position: 510px }
+    to { background-position: 360px }
 }
 
 .drink {
-    left: 100px;
-    background: url('../assets/Effects/roundVortex/resized/spritesheet.png');
+    left: 110px;
+    background: url('../assets/Effects/roundVortex/iloveimg-resized/spritesheet.png');
     animation: drink 1s steps(82);
 }
 
 @keyframes drink {
     from { background-position: 0 }
-    to { background-position: -6970px }
+    to { background-position: -4920px }
 }
 
 p {
