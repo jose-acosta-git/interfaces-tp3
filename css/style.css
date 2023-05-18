@@ -149,8 +149,13 @@ main {
 
 .available {
     right: -40%;
-    background: url('../assets/potion.png');
-    animation: move 2s linear;  
+    background: url('../assets/Potion/spritesheet.png');
+    animation: move 2s linear, potion 1s steps(6) infinite;
+}
+
+@keyframes potion {
+    from { background-position: 0 }
+    to { background-position: 510px }
 }
 
 .drink {
