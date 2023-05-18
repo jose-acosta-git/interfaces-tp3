@@ -57,6 +57,7 @@ function gameLoop() {
                     child.style.animationPlayState = 'paused';
                 }
                 player.die();
+                enemy.hit();
             }
         });
         potions.forEach(potion => {

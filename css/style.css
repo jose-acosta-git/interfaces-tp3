@@ -114,29 +114,51 @@ main {
 }
 
 @keyframes die {
-    0% {background-position: 0}
-    100% {background-position: -410px}
+    0% {
+        background-position: 0;
+        opacity: 1;
+    }
+    100% {
+        background-position: -410px;
+        opacity: 0;
+    }
 }
 
 #enemy {
-    width: 166px;
-    height: 111px;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     bottom: 12%;
+}
+
+.idle {
+    width: 150px;
+    height: 100px;
     right: -40%;
-    background: url('../assets/Slime/idle/50smaller/recortado/spritesheet.png');
+    background: url('../assets/Slime/idle/spritesheet.png');
     animation: idle .5s steps(20) infinite, move 2s linear;
 }
 
 @keyframes idle {
     0% { background-position: 0 }
-    100% { background-position: -3320px }
+    100% { background-position: -3000px }
 }
 
 @keyframes move {
     from { right: -40% }
     to { right: 100% }
+}
+
+.enemyHit {
+    width: 100px;
+    height: 100px;
+    left: 90px;
+    background: url('../assets/Effects/vertical_explosion/spritesheet\ \(1\).png');
+    animation: hit 1s steps(74);
+}
+
+@keyframes hit {
+    from { background-position: 0 }
+    to { background-position: -7400px }
 }
 
 #potion {
