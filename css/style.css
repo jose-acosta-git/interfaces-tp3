@@ -161,7 +161,7 @@ main {
 .drink {
     left: 110px;
     background: url('../assets/Effects/roundVortex/iloveimg-resized/spritesheet.png');
-    animation: drink 1s steps(82);
+    animation: drink .5s steps(82);
 }
 
 @keyframes drink {
