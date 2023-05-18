@@ -2,17 +2,20 @@
 
 const main = document.getElementById('main');
 const magicElem = document.getElementById('magic');
+const scoreElem = document.getElementById('score');
 let enemies = [];
 let potions = [];
 let player;
 let playing = false;
 let magic;
+let score;
 
 startGame();
 
 function startGame() {
     playing = true;
     magic = 5;
+    score = 0;
     magicElem.innerHTML = `Magia restante: ${magic}`;
     player = new Player(main);
     window.addEventListener('keydown', function(e) {
@@ -20,12 +23,14 @@ function startGame() {
             player.jump();
     });
 
-    setInterval(gameLoop, 200);
+    setInterval(gameLoop, 17);
 
     setInterval(() => {
         if (playing) {
             magic--;
             magicElem.innerHTML = `Magia restante: ${magic}`;
+            score++;
+            scoreElem.innerHTML = `Puntos: ${score}`;
         }
     }, 1000)
 

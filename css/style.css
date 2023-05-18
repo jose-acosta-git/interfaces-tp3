@@ -164,7 +164,7 @@ main {
     to { background-position: -6970px }
 }
 
-#magic {
+p {
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
     color: white;
@@ -172,6 +172,13 @@ main {
     text-shadow: 2px 2px black;
     z-index: 1;
     position: absolute;
-    left: 10px;
     top: 10px;
+}
+
+#magic {
+    left: 10px;
+}
+
+#score {
+    right: 10px;
 }
