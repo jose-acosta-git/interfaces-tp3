@@ -2,8 +2,10 @@
 
 const main = document.getElementById('main');
 let enemies = [];
+let potions = [];
 let player;
 let playing = false;
+let magic = 50;
 
 startGame();
 
@@ -15,12 +17,19 @@ function startGame() {
             player.jump();
     });
 
+    setInterval(gameLoop, 200);
+
+    //Pushear random cada 1s
+
     setInterval(() => {
         if (playing)
             enemies.push(new Enemy(main))
     }, 3000);
 
-    setInterval(gameLoop, 200);
+    setInterval(() => {
+        if (playing)
+            potions.push(new Potion(main))
+    }, 2000);
 
 }
 
@@ -35,6 +44,12 @@ function gameLoop() {
                 player.die();
             }
         });
+        potions.forEach(potion => {
+            if(areColliding(player.getPos(), potion.getPos())) {
+                potion.drink();
+                magic++;
+            }
+        })
     }
 }
 

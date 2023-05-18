@@ -138,3 +138,28 @@ main {
     from { right: -40% }
     to { right: 100% }
 }
+
+#potion {
+    width: 85px;
+    height: 85px;
+    z-index: 3;
+    position: absolute;
+    bottom: 15%;
+}
+
+.available {
+    right: -40%;
+    background: url('../assets/potion.png');
+    animation: move 2s linear;  
+}
+
+.drink {
+    left: 100px;
+    background: url('../assets/Effects/roundVortex/resized/spritesheet.png');
+    animation: drink 1s steps(82);
+}
+
+@keyframes drink {
+    from { background-position: 0 }
+    to { background-position: -6970px }
+}

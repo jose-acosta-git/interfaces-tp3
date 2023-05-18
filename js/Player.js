@@ -29,7 +29,8 @@ class Player extends Entity {
         this.element.classList.add('die');
         this.element.addEventListener('animationend', () => {
             this.element.classList.remove('die');
-            this.element.style.background = 'url(assets/BlueWizard/die/resized/cutted/lastFrame.png)'
+            this.element.style.background = 'url(assets/BlueWizard/die/resized/cutted/lastFrame.png)';
+            this.element.style.animationPlayState = 'paused';
         })
     }
 }
