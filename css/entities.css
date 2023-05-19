@@ -1,0 +1,115 @@
+#player {
+    width: 80px;
+    height: 139px;
+    z-index: 2;
+    position: absolute;
+    bottom: 12%;
+    left: 100px;
+}
+
+.run {
+    background: url('../assets/BlueWizard/run/50smaller/PineTools.com_files/sprite.png');
+    animation: run .8s steps(20) infinite;
+}
+
+@keyframes run {
+    0% {background-position: 0}
+    100% {background-position: -1600px}
+}
+
+.jump {
+    background: url('../assets/BlueWizard/jump/50smaller/PineTools.com_files/spritesheet.png');
+    animation: jump .8s steps(8);
+}
+
+@keyframes jump {
+    0% {background-position: 0}
+    50% {bottom: 50%}
+    100% {
+        background-position: -640px;
+        bottom: 10%;
+    }
+}
+
+.die {
+    background: url('../assets/BlueWizard/die/resized/cutted/spritesheet.png');
+    animation: die .5s steps(5);
+}
+
+@keyframes die {
+    0% {
+        background-position: 0;
+        opacity: 1;
+    }
+    100% {
+        background-position: -410px;
+        opacity: 0;
+    }
+}
+
+#enemy {
+    z-index: 2;
+    position: absolute;
+    bottom: 12%;
+}
+
+.idle {
+    width: 150px;
+    height: 100px;
+    right: -40%;
+    background: url('../assets/Slime/idle/spritesheet.png');
+    animation: idle .5s steps(20) infinite, move 2s linear;
+}
+
+@keyframes idle {
+    0% { background-position: 0 }
+    100% { background-position: -3000px }
+}
+
+@keyframes move {
+    from { right: -40% }
+    to { right: 100% }
+}
+
+.enemyHit {
+    width: 100px;
+    height: 100px;
+    left: 90px;
+    background: url('../assets/Effects/vertical_explosion/spritesheet\ \(1\).png');
+    animation: hit 1s steps(74);
+}
+
+@keyframes hit {
+    from { background-position: 0 }
+    to { background-position: -7400px }
+}
+
+#potion {
+    width: 60px;
+    height: 60px;
+    z-index: 3;
+    position: absolute;
+    bottom: 15%;
+}
+
+.available {
+    right: -40%;
+    background: url('../assets/Potion/spritesheet.png');
+    animation: move 2s linear, potion 1s steps(6) infinite;
+}
+
+@keyframes potion {
+    from { background-position: 0 }
+    to { background-position: 360px }
+}
+
+.drink {
+    left: 110px;
+    background: url('../assets/Effects/roundVortex/iloveimg-resized/spritesheet.png');
+    animation: drink .5s steps(82);
+}
+
+@keyframes drink {
+    from { background-position: 0 }
+    to { background-position: -4920px }
+}
