@@ -43,13 +43,14 @@
     margin: 0;
     animation: scroll 3s linear infinite;
 }
-.mist {
+#mist {
     background: url('../assets/NightForest/Layers/mist.png') repeat-x;
     background-size: 1280px 100%;
     position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
+    transition: opacity 1s;
 }
 
 @keyframes scroll {
