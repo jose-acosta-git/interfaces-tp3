@@ -5,6 +5,7 @@ const main = document.getElementById('main');
 const magicElem = document.getElementById('magic');
 const scoreElem = document.getElementById('score');
 const mistElem = document.getElementById('mist');
+const menu = document.getElementById('menu');
 
 
 //Declaracion de variables necesarias para el funcionamiento del juego
@@ -19,6 +20,7 @@ let score;
 document.getElementById('start').addEventListener('click', startGame);
 
 function startGame() {
+    menu.style.opacity = 0;
     mistElem.style.opacity = 0;
     playing = true;
     magic = 30;
@@ -104,4 +106,5 @@ function areColliding(entity1, entity2) {
 
 function endGame() {
     mistElem.style.opacity = 1;
+    menu.style.opacity = 1;
 }
