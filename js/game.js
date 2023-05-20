@@ -24,10 +24,11 @@ function startGame() {
     magic = 30;
     score = 0;
     magicElem.innerHTML = `Magia restante: ${magic}`;
-    scoreElem.innerHTML = `Puntos: ${score}`;
+    scoreElem.innerHTML = `Metros recorridos: ${score}m`;
     player = new Player(main);
+    console.log(player.getPos);
     window.addEventListener('keydown', function(e) {
-        if (e.key == 'ArrowUp')
+        if ( playing && (e.key == 'ArrowUp'))
             player.jump();
     });
 
@@ -36,7 +37,6 @@ function startGame() {
     updateStats();
 
     spawnEntity();
-
 }
 
 //Actualiza la magia y el puntaje cada segundo
@@ -46,7 +46,7 @@ function updateStats() {
             magic--;
             magicElem.innerHTML = `Magia restante: ${magic}`;
             score++;
-            scoreElem.innerHTML = `Puntos: ${score}`;
+            scoreElem.innerHTML = `Metros recorridos: ${score}m`;
         }
     }, 1000)
 }
@@ -67,30 +67,24 @@ function spawnEntity() {
 function gameLoop() {
     enemies.forEach(enemy => {
         if(areColliding(player.getPos(), enemy.getPos())) {
-            endGame();
-            playing = false;
-            for (const child of main.children) {
-                child.style.animationPlayState = 'paused';
-            }
-            player.die();
             enemy.hit();
+            endGame();
         }
     });
     potions.forEach(potion => {
         if(areColliding(player.getPos(), potion.getPos())) {
-            potion.drink();
-            magic++;
-            magicElem.innerHTML = `Magia restante: ${magic}`;
-            potions.splice(potions.indexOf(potion), 1);
+            drinkPotion(potions, potion);
         }
-    })
-    if (magic == 0) {
-        playing = false;
-        for (const child of main.children) {
-            child.style.animationPlayState = 'paused';
-        }
-        player.die();
-    }
+    });
+    if (magic == 0)
+        endGame();
+}
+
+function drinkPotion(potions, potion) {
+    potion.drink();
+    magic++;
+    magicElem.innerHTML = `Magia restante: ${magic}`;
+    potions.splice(potions.indexOf(potion), 1);
 }
 
 function areColliding(entity1, entity2) {
@@ -103,5 +97,15 @@ function areColliding(entity1, entity2) {
 }
 
 function endGame() {
+    playing = false;
+    for (const child of main.children) {
+        child.style.animationPlayState = 'paused';
+    }
+    player.die();
     mistElem.style.opacity = 1;
+    magicElem.innerHTML = ``;
+    scoreElem.innerHTML = `Recorriste un total de: ${score} metros!`;
+    player = null;
+    potions = [];
+    enemies = [];
 }
