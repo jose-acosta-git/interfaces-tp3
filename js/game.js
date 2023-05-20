@@ -106,5 +106,5 @@ function areColliding(entity1, entity2) {
 
 function endGame() {
     mistElem.style.opacity = 1;
-    menu.style.opacity = 1;
+    menu.style.opacity = 0.8;
 }
