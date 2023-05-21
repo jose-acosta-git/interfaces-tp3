@@ -7,4 +7,8 @@ class Entity {
     getPos() {
         return this.element.getBoundingClientRect();
     }
+
+    remove() {
+        this.element.remove();
+    }
 }

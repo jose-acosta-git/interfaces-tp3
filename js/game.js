@@ -20,6 +20,9 @@ let score;
 document.getElementById('start').addEventListener('click', startGame);
 
 function startGame() {
+    for (const child of main.children) {
+        child.style.animationPlayState = 'running';
+    }
     menu.style.opacity = 0;
     mistElem.style.opacity = 0;
     playing = true;
@@ -67,12 +70,19 @@ function spawnEntity() {
 }
 
 function gameLoop() {
-    enemies.forEach(enemy => {
+    for (const enemy of enemies) {
+        if(areColliding(player.getPos(), enemy.getPos())) {
+            enemy.hit();
+            endGame();
+            break;
+        }
+    }
+    /*enemies.forEach(enemy => {
         if(areColliding(player.getPos(), enemy.getPos())) {
             enemy.hit();
             endGame();
         }
-    });
+    });*/
     potions.forEach(potion => {
         if(areColliding(player.getPos(), potion.getPos())) {
             drinkPotion(potions, potion);
@@ -103,6 +113,8 @@ function endGame() {
     for (const child of main.children) {
         child.style.animationPlayState = 'paused';
     }
+    enemies.forEach(enemy => enemy.remove());
+    potions.forEach(potion => potion.remove());
     player.die();
     mistElem.style.opacity = 1;
     magicElem.innerHTML = ``;
