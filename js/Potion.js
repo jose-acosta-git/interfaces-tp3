@@ -8,6 +8,7 @@ class Potion extends Entity {
         this.soundEffect = new Audio('sounds/potion.wav');
     }
 
+    //Ejecuta el efecto visual y auditivo de tomar la pocion
     drink() {
         this.soundEffect.play();
         this.element.classList.add('drink');

@@ -20,6 +20,7 @@ class Player extends Entity {
         }
     }
 
+    //Muere y se autoelimina
     die() {
         this.soundEffect.play();
         if (this.jumping) {

@@ -7,24 +7,28 @@ const scoreElem = document.getElementById('score');
 const mistElem = document.getElementById('mist');
 const menu = document.getElementById('menu');
 const title = document.getElementById('title');
+const startBtn = document.getElementById('start');
 
 
 //Declaracion de variables necesarias para el funcionamiento del juego
+let player;
 let enemies = [];
 let potions = [];
-let player;
-let playing = false;
+
 let magic;
 let score;
+
+let playing = false;
 let wasSpawned = false;
 
+//Crea los objetos de tipo audio del menu y del juego
 const menuSong = new Audio('sounds/menu.mp3');
 menuSong.volume = 0.3;
 const playingSong = new Audio('sounds/playing.mp3');
 playingSong.volume = 0.5;
 
-//boton que da comienzo al juego
-document.getElementById('start').addEventListener('click', startGame);
+//Boton que da comienzo al juego
+startBtn.addEventListener('click', startGame);
 
 function startGame() {
     menuSong.pause();
@@ -36,11 +40,14 @@ function startGame() {
     menu.style.opacity = 0;
     mistElem.style.opacity = 0;
     playing = true;
-    magic = 30;
+
+    magic = 20;
     score = 0;
     magicElem.innerHTML = `Magia restante: ${magic}`;
     scoreElem.innerHTML = `Metros recorridos: ${score}m`;
+
     player = new Player(main);
+
     window.addEventListener('keydown', function(e) {
         if ( playing && (e.key == 'ArrowUp'))
             player.jump();
@@ -53,7 +60,7 @@ function startGame() {
     if (!wasSpawned) spawnEntity();
 }
 
-//Actualiza la magia y el puntaje cada segundo
+//Actualiza la magia y los metros recorridos cada segundo
 function updateStats() {
     setInterval(() => {
         if (playing) {
@@ -65,14 +72,14 @@ function updateStats() {
     }, 1000)
 }
 
+//Crea una entidad cada segundo, con mas probabilidad de crear un enemigo que una pocion
 function spawnEntity() {
     wasSpawned = true;
     setInterval(() => {
         if (playing) {
             const random = Math.floor(Math.random() * 5);
-            if (random < 4) {
-                potions.push(new Potion(main));
-                //enemies.push(new Enemy(main));
+            if (random < 3) {
+                enemies.push(new Enemy(main));
             } else {
                 potions.push(new Potion(main));
             }
@@ -80,6 +87,7 @@ function spawnEntity() {
     }, 1000);
 }
 
+//Verifica si el personaje colisiona con una entidad o si se queda sin magia
 function gameLoop() {
     for (const enemy of enemies) {
         if(areColliding(player.getPos(), enemy.getPos())) {
@@ -96,6 +104,7 @@ function gameLoop() {
         endGame();
 }
 
+//Ejecuta la accion de tomar una pocion y actualiza la magia
 function drinkPotion(potions, potion) {
     potion.drink();
     magic++;
@@ -103,6 +112,7 @@ function drinkPotion(potions, potion) {
     potions.splice(potions.indexOf(potion), 1);
 }
 
+//Verifica si las dos entidades estan colisionando
 function areColliding(entity1, entity2) {
     return (
         entity1.left < entity2.right &&
@@ -112,6 +122,7 @@ function areColliding(entity1, entity2) {
     )
 }
 
+//Termina el juego y vuelve a mostrar el menu
 function endGame(enemy = null) {
     playingSong.pause();
     playingSong.currentTime = 0;
@@ -122,6 +133,7 @@ function endGame(enemy = null) {
     }
     player.die();
     if (enemy) enemy.hit();
+    //Espera a que se reproduzcan animaciones y sonidos
     setTimeout(() => {
         player = null;
         enemies.forEach(enemy => enemy.remove());

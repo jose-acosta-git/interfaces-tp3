@@ -5,6 +5,7 @@ class Enemy extends Entity {
         this.element.classList.add('idle');
     }
 
+    //Explota y se autoelimina
     hit() {
         this.element.style.animationPlayState = 'running';
         this.element.classList.add('enemyHit');

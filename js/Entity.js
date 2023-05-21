@@ -8,6 +8,7 @@ class Entity {
         return this.element.getBoundingClientRect();
     }
 
+    //Elimina el elemento del documento
     remove() {
         this.element.remove();
     }
