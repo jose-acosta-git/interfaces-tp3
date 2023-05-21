@@ -90,8 +90,11 @@
     height: 60px;
     z-index: 3;
     position: absolute;
-    bottom: 15%;
 }
+
+.floorPotion {bottom: 15%;}
+.midPotion {bottom: 30%;}
+.floatingPotion {bottom: 45%}
 
 .available {
     right: -40%;

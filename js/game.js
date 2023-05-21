@@ -71,7 +71,8 @@ function spawnEntity() {
         if (playing) {
             const random = Math.floor(Math.random() * 5);
             if (random < 4) {
-                enemies.push(new Enemy(main));
+                potions.push(new Potion(main));
+                //enemies.push(new Enemy(main));
             } else {
                 potions.push(new Potion(main));
             }

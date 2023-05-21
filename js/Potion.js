@@ -3,6 +3,8 @@ class Potion extends Entity {
         super(main);
         this.element.id = 'potion';
         this.element.classList.add('available');
+        const positions = ['floorPotion', 'midPotion', 'floatingPotion'];
+        this.element.classList.add(positions[Math.floor(Math.random() * positions.length)]);
         this.soundEffect = new Audio('sounds/potion.wav');
     }
 
