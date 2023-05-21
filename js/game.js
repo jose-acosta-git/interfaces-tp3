@@ -22,7 +22,6 @@ const menuSong = new Audio('sounds/menu.mp3');
 menuSong.volume = 0.3;
 const playingSong = new Audio('sounds/playing.mp3');
 playingSong.volume = 0.5;
-const dieSound = new Audio('sounds/die.mp3');
 
 //boton que da comienzo al juego
 document.getElementById('start').addEventListener('click', startGame);
@@ -113,7 +112,6 @@ function areColliding(entity1, entity2) {
 }
 
 function endGame(enemy = null) {
-    dieSound.play();
     playingSong.pause();
     playingSong.currentTime = 0;
     menuSong.play();

@@ -4,6 +4,7 @@ class Player extends Entity {
         this.element.id = 'player';
         this.element.classList.add('run');
         this.jumping = false;
+        this.soundEffect = new Audio('sounds/die.mp3');
     }
 
     jump() {
@@ -20,6 +21,7 @@ class Player extends Entity {
     }
 
     die() {
+        this.soundEffect.play();
         if (this.jumping) {
             this.element.classList.remove('jump')
         } else {
