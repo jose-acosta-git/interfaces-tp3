@@ -45,7 +45,7 @@ main {
     width: 60%;
     left: 20%;
     height: 500px;
-    top: 20%;
+    top: 15%;
     z-index: 2;
     opacity: 0.8;
     transition: opacity 1s;

@@ -19,16 +19,17 @@
 
 .jump {
     background: url('../assets/BlueWizard/jump/50smaller/PineTools.com_files/spritesheet.png');
-    animation: jump .8s steps(8);
+    animation: jumpSprite .8s steps(8), jump .8s;
+}
+
+@keyframes jumpSprite {
+    0% {background-position: 0}
+    100% {background-position: -640px}
 }
 
 @keyframes jump {
-    0% {background-position: 0}
-    50% {bottom: 50%}
-    100% {
-        background-position: -640px;
-        bottom: 10%;
-    }
+    50% {bottom: 40%}
+    100% {bottom: 10%}
 }
 
 .die {
