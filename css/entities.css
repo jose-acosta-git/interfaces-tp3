@@ -8,7 +8,7 @@
 }
 
 .run {
-    background: url('../assets/BlueWizard/run/50smaller/PineTools.com_files/sprite.png');
+    background: url('../assets/player/run/sprite.png');
     animation: run .8s steps(20) infinite;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .jump {
-    background: url('../assets/BlueWizard/jump/50smaller/PineTools.com_files/spritesheet.png');
+    background: url('../assets/player/jump/spritesheet.png');
     animation: jumpSprite .8s steps(8), jump .8s;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .die {
-    background: url('../assets/BlueWizard/die/resized/cutted/spritesheet.png');
+    background: url('../assets/player/die/spritesheet.png');
     animation: die .5s steps(5);
 }
 
@@ -58,7 +58,7 @@
     width: 150px;
     height: 100px;
     right: -40%;
-    background: url('../assets/Slime/idle/spritesheet.png');
+    background: url('../assets/slime/spritesheet.png');
     animation: idle .5s steps(20) infinite, move 2s linear;
 }
 
@@ -76,7 +76,7 @@
     width: 100px;
     height: 100px;
     left: 90px;
-    background: url('../assets/Effects/vertical_explosion/spritesheet\ \(1\).png');
+    background: url('../assets/effects/enemyHit/spritesheet.png');
     animation: hit 1s steps(74);
 }
 
@@ -98,7 +98,7 @@
 
 .available {
     right: -40%;
-    background: url('../assets/Potion/spritesheet.png');
+    background: url('../assets/potion/spritesheet.png');
     animation: move 2s linear, potion 1s steps(6) infinite;
 }
 
@@ -109,7 +109,7 @@
 
 .drink {
     left: 110px;
-    background: url('../assets/Effects/roundVortex/iloveimg-resized/spritesheet.png');
+    background: url('../assets/effects/drinkPotion/spritesheet.png');
     animation: drink .5s steps(82);
 }
 
