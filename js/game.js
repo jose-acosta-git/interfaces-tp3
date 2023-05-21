@@ -15,6 +15,7 @@ let player;
 let playing = false;
 let magic;
 let score;
+let wasSpawned = false;
 
 //boton que da comienzo al juego
 document.getElementById('start').addEventListener('click', startGame);
@@ -31,7 +32,6 @@ function startGame() {
     magicElem.innerHTML = `Magia restante: ${magic}`;
     scoreElem.innerHTML = `Metros recorridos: ${score}m`;
     player = new Player(main);
-    console.log(player.getPos);
     window.addEventListener('keydown', function(e) {
         if ( playing && (e.key == 'ArrowUp'))
             player.jump();
@@ -41,7 +41,7 @@ function startGame() {
 
     updateStats();
 
-    spawnEntity();
+    if (!wasSpawned) spawnEntity();
 }
 
 //Actualiza la magia y el puntaje cada segundo
@@ -57,6 +57,7 @@ function updateStats() {
 }
 
 function spawnEntity() {
+    wasSpawned = true;
     setInterval(() => {
         if (playing) {
             const random = Math.floor(Math.random() * 5);
@@ -77,12 +78,6 @@ function gameLoop() {
             break;
         }
     }
-    /*enemies.forEach(enemy => {
-        if(areColliding(player.getPos(), enemy.getPos())) {
-            enemy.hit();
-            endGame();
-        }
-    });*/
     potions.forEach(potion => {
         if(areColliding(player.getPos(), potion.getPos())) {
             drinkPotion(potions, potion);
