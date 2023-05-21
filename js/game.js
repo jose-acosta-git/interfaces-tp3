@@ -20,6 +20,7 @@ let score;
 
 let playing = false;
 let wasSpawned = false;
+let wasUpdated = false;
 
 //Crea los objetos de tipo audio del menu y del juego
 const menuSong = new Audio('sounds/menu.mp3');
@@ -55,13 +56,14 @@ function startGame() {
 
     setInterval(() => {if (playing) gameLoop()}, 17);
 
-    updateStats();
+    if (!wasUpdated) updateStats();
 
     if (!wasSpawned) spawnEntity();
 }
 
 //Actualiza la magia y los metros recorridos cada segundo
 function updateStats() {
+    wasUpdated = true;
     setInterval(() => {
         if (playing) {
             magic--;
