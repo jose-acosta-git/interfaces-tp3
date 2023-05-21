@@ -6,6 +6,7 @@ const magicElem = document.getElementById('magic');
 const scoreElem = document.getElementById('score');
 const mistElem = document.getElementById('mist');
 const menu = document.getElementById('menu');
+const title = document.getElementById('title');
 
 
 //Declaracion de variables necesarias para el funcionamiento del juego
@@ -123,9 +124,10 @@ function endGame(enemy = null) {
     player.die();
     if (enemy) enemy.hit();
     setTimeout(() => {
+        title.innerHTML = `Recorriste un total de: ${score} metros!`;
         mistElem.style.opacity = 1;
         magicElem.innerHTML = ``;
-        scoreElem.innerHTML = `Recorriste un total de: ${score} metros!`;
+        scoreElem.innerHTML = ``;
         player = null;
         menu.style.opacity = 0.8;
         enemies.forEach(enemy => enemy.remove());
