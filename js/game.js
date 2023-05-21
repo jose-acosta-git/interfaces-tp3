@@ -122,15 +122,15 @@ function endGame(enemy = null) {
     player.die();
     if (enemy) enemy.hit();
     setTimeout(() => {
-        title.innerHTML = `Recorriste un total de: ${score} metros!`;
-        mistElem.style.opacity = 1;
-        magicElem.innerHTML = ``;
-        scoreElem.innerHTML = ``;
         player = null;
-        menu.style.opacity = 0.8;
         enemies.forEach(enemy => enemy.remove());
         potions.forEach(potion => potion.remove());
         potions = [];
         enemies = [];
+        title.innerHTML = `Recorriste un total de: ${score} metros!`;
+        mistElem.style.opacity = 1;
+        magicElem.innerHTML = ``;
+        scoreElem.innerHTML = ``;
+        menu.style.opacity = 0.8;
     }, 1000);
 }
