@@ -44,7 +44,7 @@ main {
     position: absolute;
     width: 60%;
     left: 20%;
-    height: 60%;
+    height: 500px;
     top: 20%;
     z-index: 2;
     opacity: 0.8;
@@ -52,15 +52,15 @@ main {
 }
 
 #menu h1 {
-    font-size: 60px;
+    font-size: 30px;
 }
 
 #menu h2 {
-    font-size: 40px;
+    font-size: 25px;
 }
 
 #menu p {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #menu button {
