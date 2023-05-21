@@ -73,8 +73,7 @@ function spawnEntity() {
 function gameLoop() {
     for (const enemy of enemies) {
         if(areColliding(player.getPos(), enemy.getPos())) {
-            enemy.hit();
-            endGame();
+            endGame(enemy);
             break;
         }
     }
@@ -103,19 +102,22 @@ function areColliding(entity1, entity2) {
     )
 }
 
-function endGame() {
+function endGame(enemy = null) {
     playing = false;
     for (const child of main.children) {
         child.style.animationPlayState = 'paused';
     }
-    enemies.forEach(enemy => enemy.remove());
-    potions.forEach(potion => potion.remove());
     player.die();
-    mistElem.style.opacity = 1;
-    magicElem.innerHTML = ``;
-    scoreElem.innerHTML = `Recorriste un total de: ${score} metros!`;
-    player = null;
-    potions = [];
-    enemies = [];
-    menu.style.opacity = 0.8;
+    if (enemy) enemy.hit();
+    setTimeout(() => {
+        mistElem.style.opacity = 1;
+        magicElem.innerHTML = ``;
+        scoreElem.innerHTML = `Recorriste un total de: ${score} metros!`;
+        player = null;
+        menu.style.opacity = 0.8;
+        enemies.forEach(enemy => enemy.remove());
+        potions.forEach(potion => potion.remove());
+        potions = [];
+        enemies = [];
+    }, 1000);
 }
